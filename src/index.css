@@ -5,7 +5,7 @@
   --dsc-color-bg-secondary: #55bc04;
 
   --dsc-color-card-bg: #fff;
-  --dsc-color-card-border: #d9d9d9;
+  --dsc-color-input-border: #c2c2c2;
 
   --dsc-color-btn-primary: #55bc04;
 
@@ -77,4 +77,61 @@ nav h1 {
 
 .menu-item {
   margin-right: 2px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+/*-----------------------------------------------------------------*/
+/* card styles */
+
+.card {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--dsc-color-card-bg);
+  padding: 20px;
+}
+
+/*-----------------------------------------------------------------*/
+/* form styles */
+
+.form-control {
+  width: 200px;
+  height: 40px;
+  border: 1px solid var(--dsc-color-input-border);
+  color: var(--dsc-color-font-secondary);
+  padding: 0 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.form-control:focus {
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: var(--dsc-color-font-placeholder);
+}
+
+/*-----------------------------------------------------------------*/
+/* button styles */
+
+.btn {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--dsc-color-btn-primary);
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--dsc-color-font-primary);
 }

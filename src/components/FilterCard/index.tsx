@@ -1,18 +1,43 @@
 import './styles.css';
+import { useState } from 'react';
 
-export default function FilterCard() {
+type Props = {
+    onFilter: Function;
+}
+
+type FormData = {
+    minPrice?: number;
+    maxPrice?: number;
+}
+
+export default function FilterCard({ onFilter }: Props) {
+
+    const [formData, setFormData] = useState<FormData>({});
+
+    function handleInputChange(event: any) {
+        const value = event.target.value;
+        const name = event.target.name;
+        setFormData({ ...formData, [name]: value })
+    }
+
+    function handleSubmit(event: any) {
+        event.preventDefault();
+        onFilter(formData.minPrice, formData.maxPrice);
+
+    }
+
     return (
         <div className='card mt20'>
-            <form >
+            <form onSubmit={handleSubmit}>
                 <div>
-                    <input className='form-control mb20' type="text" placeholder='Preço mínimo' />
+                    <input className='form-control mb20' type="text" name="minPrice" value={formData.minPrice || ""} onChange={handleInputChange} placeholder='Preço mínimo' />
                 </div>
                 <div>
-                    <input className='form-control mb20' type="text" placeholder='Preço máximo' />
+                    <input className='form-control mb20' type="text" name="maxPrice" value={formData.maxPrice || ""} onChange={handleInputChange} placeholder='Preço máximo' />
                 </div>
-                <div className='btn'>
+                <button type="submit" className="btn">
                     Filtrar
-                </div>
+                </button>
             </form>
 
         </div>

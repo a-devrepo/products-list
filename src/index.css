@@ -4,7 +4,8 @@
   --dsc-color-bg-primary: #c2c2c2;
   --dsc-color-bg-secondary: #55bc04;
 
-  --dsc-color-card-bg: #fff;
+  --dsc-color-card-bg-primary: #fff;
+  --dsc-color-card-bg-secondary: #55bc04;
   --dsc-color-input-border: #c2c2c2;
 
   --dsc-color-btn-primary: #55bc04;
@@ -93,8 +94,16 @@ nav h1 {
 .card {
   border: none;
   border-radius: 5px;
-  background-color: var(--dsc-color-card-bg);
+  background-color: var(--dsc-color-card-bg-primary);
   padding: 20px;
+}
+
+.product-card {
+  border: 1px solid var(--dsc-color-card-bg-secondary);
+  border-radius: 5px;
+  background-color: var(--dsc-color-card-bg-primary);
+  padding: 20px;
+  padding: 10px;
 }
 
 /*-----------------------------------------------------------------*/

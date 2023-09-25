@@ -1,9 +1,10 @@
 import './styles.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductDTO } from '../../models/product';
 import FilterCard from '../FilterCard';
 import ListCard from '../ListCard';
 import * as productService from '../../services/product-service';
+import { ContextListCount } from '../../utils/context-list';
 
 
 type QueryParams = {
@@ -12,7 +13,9 @@ type QueryParams = {
 }
 
 export default function ListingBody() {
-    4
+
+
+    const { setContextListCount } = useContext(ContextListCount);
 
     const [products, setProducts] = useState<ProductDTO[]>([]);
     const [queryParams, setQueryParams] = useState<QueryParams>(
@@ -22,12 +25,14 @@ export default function ListingBody() {
         })
 
     function handleSearch(minPrice: number, maxPrice: number) {
+        setProducts([]);
         setQueryParams({ ...queryParams, minPrice, maxPrice });
     }
 
     useEffect(() => {
         const list = productService.findByPrice(queryParams.minPrice, queryParams.maxPrice);
-        console.log(list);
+        setContextListCount(list.length);
+        setProducts(list);
     }, [queryParams])
 
 
@@ -35,8 +40,10 @@ export default function ListingBody() {
         <main>
             <section className='container'>
                 <FilterCard onFilter={handleSearch} />
-                <ListCard />
+                <ListCard products={products} />
             </section>
         </main>
     )
 }
+
+
